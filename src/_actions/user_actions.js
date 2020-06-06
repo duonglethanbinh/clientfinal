@@ -50,7 +50,7 @@ export function logoutUser(){
     }
 }
 export function addToCart(_id){
-    const request = axios.post(`${USER_SERVER}/addToCart?productId=${_id}`)
+    const request = axios.post(`https://testservernha.herokuapp.com/addToCart?productId=${_id}`)
     .then(response => response.data);
 
     return {
@@ -59,7 +59,7 @@ export function addToCart(_id){
     }
 }
 export function getCartItems(cartItems, userCart){
-    const request = axios.get(`/api/product/products_by_id?id=${cartItems}&type=array`)
+    const request = axios.get(`https://testservernha.herokuapp.com/api/product/products_by_id?id=${cartItems}&type=array`)
     .then(response => {
         userCart.forEach(cartItem=>{
             response.data.forEach((productDetail,i)=>{
@@ -76,7 +76,7 @@ export function getCartItems(cartItems, userCart){
     }
 }
 export function removeCartItem(id){
-    const request = axios.get(`/api/users/removeFromCart?_id=${id}`)
+    const request = axios.get(`${USER_SERVER}api/users/removeFromCart?_id=${id}`)
     .then(response => {
         response.data.cart.forEach(item=>{
             response.data.cartDetail.forEach((k,i)=>{

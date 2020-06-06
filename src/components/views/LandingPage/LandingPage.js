@@ -6,15 +6,14 @@ import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
 import CheckBox from './Sections/CheckBox';
 import RadioBox from './Sections/RadioBox';
-import Column from 'antd/lib/table/Column';
 import {devices, price} from './Sections/Datas';
 import SearchFeature from './Sections/SearchFeature';
 function LandingPage() {
     const [Products, setProducts] = useState([])
     const [Skip, setSkip] = useState(0)
-    const [Limit, setLimit] = useState(8)
+    const [Limit] = useState(8)
     const [PostSize, setPostSize] = useState(0)
-    const [SearchTerms, setSearchTerms] = useState("")
+    const [setSearchTerms] = useState("")
     const [Filters, setFilters] = useState({
         devices:[],
         price:[]
@@ -25,9 +24,9 @@ function LandingPage() {
             limit:Limit
         }
         getProducts(variables);
-    },[])
+    })
     const getProducts=(variables)=>{
-        Axios.post('/api/product/getProducts',variables)
+        Axios.post('https://testservernha.herokuapp.com/api/product/getProducts',variables)
         .then(response=>{
             if(response.data.success){
                 if(variables.loadMore){

@@ -61,7 +61,7 @@ function LoginPage(props) {
               setTimeout(() => {
                 setFormErrorMessage("")
               }, 3000);
-            });
+              });
           setSubmitting(false);
         }, 500);
       }}
@@ -71,12 +71,10 @@ function LoginPage(props) {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
         } = props;
         return (
           <div className="app">

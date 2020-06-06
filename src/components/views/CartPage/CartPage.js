@@ -36,7 +36,7 @@ function CartPage(props) {
     const removeFromCart=(productId)=>{
         dispatch(removeCartItem(productId))
         .then(()=>{
-            Axios.get('/api/users/userCartInfo')
+            Axios.get('https://testservernha.herokuapp.com/api/users/userCartInfo')
             .then(response=>{
                 if(response.data.success){
                     if(response.data.cartDetail.length <= 0){

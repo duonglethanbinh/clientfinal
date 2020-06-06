@@ -10,7 +10,7 @@ function FileUpload(props) {
             header:{'content-type':'multipart/form-data'}
         }
         formData.append("file",files[0])
-        Axios.post('/api/product/uploadImage',formData,config)
+        Axios.post('https://testservernha.herokuapp.com/api/product/uploadImage',formData,config)
             .then(response=>{
                 if(response.data.success){
                     setImages([...Images, response.data.image])

@@ -10,11 +10,11 @@ function DetailProductPage(props) {
     const productId=props.match.params.productId
     const [Product, setProduct] = useState([])
     useEffect(() => {
-        Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
+        Axios.get(`https://testservernha.herokuapp.com/api/product/products_by_id?id=${productId}&type=single`)
         .then(response=>{
             setProduct(response.data[0])
         })
-    }, [])
+    })
     const addToCartHandler=(productId)=>{
         dispatch(addToCart(productId))
     }
