@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { Typography, Button, Form, Input } from "antd";
+import React, {useState} from 'react'
+import { Typography, Button, Form, message, Input, Icon } from "antd";
 import FileUpload from '../../utils/FileUpload';
 import Axios from 'axios';
 const { Title } = Typography;
 const { TextArea } = Input;
-const Devices = [
-    { key: 1, value: "Điện thoại" },
-    { key: 2, value: "Tablet" },
-    { key: 3, value: "Đồng hồ" },
-    { key: 4, value: "Âm thanh" },
-    { key: 5, value: "Laptop" },
+const Devices=[
+    {key:1,value:"Điện thoại"},
+    {key:2,value:"Tablet"},
+    {key:3,value:"Đồng hồ"},
+    {key:4,value:"Âm thanh"},
+    {key:5,value:"Laptop"},
 ]
 function UploadProductPage(props) {
     const [TitleValue, setTitleValue] = useState("")
@@ -17,67 +17,67 @@ function UploadProductPage(props) {
     const [PriceValue, setPriceValue] = useState(0)
     const [DevicesValue, setDevicesValue] = useState(1)
     const [Images, setImages] = useState([])
-    const onTitleChange = (event) => {
+    const onTitleChange=(event)=>{
         setTitleValue(event.currentTarget.value)
     }
-    const onDescriptionChange = (event) => {
+    const onDescriptionChange=(event)=>{
         setDescriptionValue(event.currentTarget.value)
     }
-    const onPriceChange = (event) => {
+    const onPriceChange=(event)=>{
         setPriceValue(event.currentTarget.value)
     }
-    const updateImages = (newImages) => {
+    const updateImages=(newImages)=>{
         setImages(newImages)
     }
-    const onDevicesSelectChange = (event) => {
+    const onDevicesSelectChange=(event)=>{
         setDevicesValue(event.currentTarget.value)
     }
-    const onSubmit = (event) => {
+    const onSubmit=(event)=>{
         event.preventDefault();
-        if (!TitleValue || !DescriptionValue || !PriceValue || !Images || !Devices) {
+        if(!TitleValue||!DescriptionValue||!PriceValue||!Images||!Devices){
             return alert('Vui lòng điền hết vào các trường!')
         }
-        const variables = {
-            writer: props.user.userData._id,
-            title: TitleValue,
-            description: DescriptionValue,
-            price: PriceValue,
-            images: Images,
-            devices: DevicesValue
+        const variables={
+            writer:props.user.userData._id,
+            title:TitleValue,
+            description:DescriptionValue,
+            price:PriceValue,
+            images:Images,
+            devices:DevicesValue
         }
-        Axios.post('https://testservernha.herokuapp.com/api/product/uploadProduct', variables)
-            .then(response => {
-                if (response.data.success) {
-                    alert('Sản phẩm đã được upload thành công')
-                    props.history.push('/')
-                } else {
-                    alert('Upload sản phẩm không thành công')
-                }
-            })
+        Axios.post('https://testservernha.herokuapp.com/api/product/uploadProduct',variables)
+        .then(response=>{
+            if(response.data.success){
+                alert('Sản phẩm đã được upload thành công')
+                props.history.push('/') 
+            }else{
+                alert('Upload sản phẩm không thành công')
+            }
+        })
     }
     return (
-        <div style={{ maxWidth: '700px', margin: '2rem auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <div style={{maxWidth:'700px',margin:'2rem auto'}}>
+            <div style={{textAlign:'center',marginBottom:'2rem'}}>
                 <Title level={2}>Upload sản phẩm</Title>
             </div>
             <Form onSubmit={onSubmit}>
-                <FileUpload refreshFunction={updateImages} />
-                <br />
-                <br />
+                <FileUpload refreshFunction={updateImages}/>
+                <br/>
+                <br/>
                 <label>Tiêu đề</label>
                 <Input
                     onChange={onTitleChange}
                     value={TitleValue}
                 />
-                <br />
-                <br />
+                <br/>
+                <br/>
                 <label>Mô tả</label>
                 <TextArea
                     onChange={onDescriptionChange}
                     value={DescriptionValue}
                 />
-                <br />
-                <br />
+                <br/>
+                <br/>
                 <label>Mức giá (VND)</label>
                 <Input
                     onChange={onPriceChange}
@@ -85,12 +85,12 @@ function UploadProductPage(props) {
                     type='number'
                 />
                 <select onChange={onDevicesSelectChange}>
-                    {Devices.map(item => (
+                    {Devices.map(item=>(
                         <option key={item.key} value={item.key}>{item.value}</option>
                     ))}
                 </select>
-                <br />
-                <br />
+                <br/>
+                <br/>
                 <Button onClick={onSubmit}>
                     Đăng
                 </Button>

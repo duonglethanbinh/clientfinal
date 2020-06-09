@@ -46,6 +46,7 @@ function LoginPage(props) {
             .then(response => {
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem('userId', response.payload.userId);
+                console.log(localStorage.userId)
                 if (rememberMe === true) {
                   window.localStorage.setItem('rememberMe', values.id);
                 } else {
@@ -61,7 +62,7 @@ function LoginPage(props) {
               setTimeout(() => {
                 setFormErrorMessage("")
               }, 3000);
-              });
+            });
           setSubmitting(false);
         }, 500);
       }}
@@ -71,10 +72,12 @@ function LoginPage(props) {
           values,
           touched,
           errors,
+          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
+          handleReset,
         } = props;
         return (
           <div className="app">

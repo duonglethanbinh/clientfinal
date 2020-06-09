@@ -8,7 +8,6 @@ function ProductInfo(props) {
     }, [props.detail])
     const addToCarthandler=()=>{
         props.addToCart(props.detail._id)
-        alert('Added');
     }
     return (
         <div>
