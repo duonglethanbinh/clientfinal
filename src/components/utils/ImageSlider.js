@@ -6,7 +6,7 @@ function ImageSlider(props) {
             <Carousel autoplay>
                 {props.images.map((image,index)=>(
                     <div key={index}>
-                        <img style={{width:'100%',maxHeight:'150px'}} src={`https://testservernha.herokuapp.com/${image}`} alt="productImage"/>
+                        <img style={{width:'100%',maxHeight:'150px'}} src={`${image}`} alt="productImage"/>
                     </div>
                 ))}
             </Carousel>

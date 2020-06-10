@@ -60,7 +60,7 @@ export function addToCart(_id){
     }
 }
 export function getCartItems(cartItems, userCart){
-    const request = axios.get(`https://testservernha.herokuapp.com/api/product/products_by_id?id=${cartItems}&type=array`)
+    const request = axios.get(`/api/product/products_by_id?id=${cartItems}&type=array`)
     .then(response => {
         userCart.forEach(cartItem=>{
             response.data.forEach((productDetail,i)=>{
@@ -77,7 +77,7 @@ export function getCartItems(cartItems, userCart){
     }
 }
 export function removeCartItem(id){
-    const request = axios.get(`https://testservernha.herokuapp.com/api/users/removeFromCart?_id=${id}`)
+    const request = axios.get(`/api/users/removeFromCart?_id=${id}`)
     .then(response => {
         response.data.cart.forEach(item=>{
             response.data.cartDetail.forEach((k,i)=>{
